@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- display contents of user basket -->
+<section> 
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+        </ol>
+      </nav>
+
+    <div class="container">
+        <div class="row co-12 d-flex mt-2 mb-2">
+            <h1>Shopping Cart</h1>
+        </div>
+
+        <!-- each product on seperate row -->
+        {% for product in order.products %}
+            <div class="row shadow-md my-row mb-3 box-css">
+                <div class="col-sm-12 card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <a href="{{ url_for('main.item', product_id=product.product_detail_id) }}">
+                                    <img class="img-thumbnail card-image" src="{{url_for('static', filename=('img/' + product.image))}}">
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <!-- Item Description -->
+                                <h2>{{product.productname}}</h2>
+                                <p class="card-text">Launch Date: {{product.product_detail.launch_date}}</p>
+                                <p class="card-text">Bluetooth Support: {{product.product_detail.bluetooth_support}}</p>  
+                                <p class="card-text">Language: {{product.product_detail.language}}</p>  
+                                <p class="card-text">Made in: {{product.product_detail.made_in}}</p>     
+                            </div> 
+
+                            <div class="col-2">
+                                <h2 class="">{{"$%.2f"|format(product.price)}}</h5>
+                            </div>
+
+                            <div class="col-1">
+                                <form method="POST" action="{{url_for('main.deleteorderitem')}}">
+                                    <input type="hidden" id="id" name="id" value="{{product.id}}">
+                                    <button type="submit" class="form-link">
+                                        <i class="bi bi-trash"></i> Remove
+                                    </button>
+                                </form> 
+                            </div>
+
+
+                        </div>                      
+                    </div>
+                </div>
+                <br><br>
+                <!-- right column has price and delete button -->
+                <div class="col-sm-2">
+                <!-- delete item button -->
+
+                </div>
+            </div>
+        {% endfor %}
+        
+        <!-- total price and page controls -->
+        <section>
+            <div class="row co-12 d-flex bg-white checkout-total box-css">
+                <div class="col-5">
+                    <h4 class="mt-4">Sub Total {{"$%.2f"|format(total_price)}}</h5>
+                </div>
+                <div class="col-7 d-flex mt-4 mb-4 justify-content-end">
+                    <a href="{{url_for('main.checkout')}}" class="btn btn-success mr-4"><i class="bi bi-bag"></i> Checkout</a>
+                    <a href="{{url_for('main.deleteorder')}}" class="btn btn-primary">Clear Cart</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+{% endblock %}

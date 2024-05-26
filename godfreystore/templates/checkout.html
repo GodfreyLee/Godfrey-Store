@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% from 'bootstrap4/form.html' import render_form %}
+
+{% block main %}
+    <section> 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ url_for('main.order') }}">Shopping Cart</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+            </ol>
+          </nav> 
+        <div class="container bg-white p-3 mt-2 box-css">
+            <div class="row">
+                <div class = "col-12">
+                    <h1>Checkout</h1>
+                    <p>
+                        Please review the items in your cart, enter your shipping information, and choose your preferred payment method. Ensure all details are correct before confirming your order. Thank you for shopping with us!
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class = "col-6">
+                    {{render_form(form)}}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

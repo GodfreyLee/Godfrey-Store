@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block head %}
+        <!--Jumbotron for Hero Section -->
+        <div class="jumbotron jumbotron-fluid card jumbotron-background">
+            <div class="row justify-content-center mt-5 pb-4">
+                <div class="col-md-8">
+                    <div class="jumbotron jumbotron-div shadow py-4 mb-5 ">
+                        <h1 class="text-center jumbotron-title">Find your best GPS products</h1>
+                            <form class="row justify-content-center form-inline my-2 my-lg-0" action="{{url_for('main.search')}}">
+                                <input class="form-control search-box" type="search" placeholder="Search Products" aria-label="Search" name="search">
+                                <button class="btn search-btn" type="submit">Search</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- hero section -->
+{% endblock %}
+
+
+{% block main %}
+     <!-- Contains the main content of the website, divided into sections -->
+        <section class="m-3">
+            <div class="category-title-parent">
+                <h1 class="category-title" id="car-gps">Car GPS</h1>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    {% for product in products%}
+                        {% if product.product_category == 'Car GPS' %}
+                            <div class="col-md-6 col-lg-3">
+                                <article class="card withCSS h-100">
+                                    <a href="{{ url_for('main.item', product_id=product.product_detail_id) }}">
+                                        <img class="card-img-top card-image"
+                                        src="{{url_for('static', filename = 'img/'+product.image)}}"
+                                        alt="{{product.productname}}">
+                                    </a>
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{product.productname}}</h3>
+                                        <h5 class="card-text text-success font-weight-light">Stock Status: {{product.stock_status}}</h5>
+                                        <h5 class="card-text font-italic">${{product.price}}</h5>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form action="{{url_for('main.order')}}">
+                                            <input type="hidden" id="product_id" name="product_id" value="{{product.id}}">
+                                            <input class="btn btn-success card-button-CSS" type="submit" value="Add to Cart">
+                                        </form>
+                                    </div>
+                                </article>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+        </section>
+
+
+        <section class="m-3">
+            <div class="category-title-parent">
+                <h1 class="category-title" id="cycling-gps">Cycling GPS</h1>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    {% for product in products%}
+                    {% if product.product_category == 'Cycling GPS' %}
+                        <div class="col-md-6 col-lg-3">
+                            <article class="card withCSS h-100">
+                                <a href="{{ url_for('main.item', product_id=product.product_detail_id) }}">
+                                    <img class="card-img-top card-image"
+                                    src="{{url_for('static', filename = 'img/'+product.image)}}"
+                                    alt="{{product.productname}}">
+                                </a>
+                                <div class="card-body">
+                                    <h3 class="card-title">{{product.productname}}</h3>
+                                    <h5 class="card-text text-success font-weight-light">Stock Status: {{product.stock_status}}</h5>
+                                    <h5 class="card-text font-italic">${{product.price}}</h5>
+                                </div>
+                                <div class="card-footer">
+                                    <form action="{{url_for('main.order')}}">
+                                        <input type="hidden" id="product_id" name="product_id" value="{{product.id}}">
+                                        <input class="btn btn-success card-button-CSS" type="submit" value="Add to Cart">
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="m-3">
+            <div class="category-title-parent">
+                <h1 class="category-title" id="fitness-watches">Fitness Watches</h1>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    {% for product in products%}
+                    {% if product.product_category == 'Fitness Watches' %}
+                        <div class="col-md-6 col-lg-3">
+                            <article class="card withCSS h-100">
+                                <a href="{{ url_for('main.item', product_id=product.product_detail_id) }}">
+                                    <img class="card-img-top card-image"
+                                    src="{{url_for('static', filename = 'img/'+product.image)}}"
+                                    alt="{{product.productname}}">
+                                </a>
+                                <div class="card-body">
+                                    <h3 class="card-title">{{product.productname}}</h3>
+                                    <h5 class="card-text text-success font-weight-light">Stock Status: {{product.stock_status}}</h5>
+                                    <h5 class="card-text font-italic">${{product.price}}</h5>
+                                </div>
+                                <div class="card-footer">
+                                    <form action="{{url_for('main.order')}}">
+                                        <input type="hidden" id="product_id" name="product_id" value="{{product.id}}">
+                                        <input class="btn btn-success card-button-CSS" type="submit" value="Add to Cart">
+                                    </form>
+                                </div>
+                            </article>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div> 
+            
+        </section>
+{% endblock %}

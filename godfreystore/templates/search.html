@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main %}
+     <!-- Contains the main content of the website, divided into sections -->
+        <section class="m-3">
+            <div class="category-title-parent">
+                <h1 class="category-title" id="car-gps">Search Result</h1>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    {% for product in product%}
+                            <div class="col-md-6 col-lg-3 mt-3">
+                                <article class="card withCSS h-100">
+                                    <a href="{{ url_for('main.item', product_id=product.product_detail_id) }}">
+                                        <img class="card-img-top card-image"
+                                        src="{{url_for('static', filename = 'img/'+product.image)}}"
+                                        alt="{{product.productname}}">
+                                    </a>
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{product.productname}}</h3>
+                                        <h5 class="card-text text-success font-weight-light">Stock Status: {{product.stock_status}}</h5>
+                                        <h5 class="card-text font-italic">${{product.price}}</h5>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form action="{{url_for('main.order')}}">
+                                            <input type="hidden" id="product_id" name="product_id" value="{{product.id}}">
+                                            <input class="btn btn-success card-button-CSS" type="submit" value="Add to Cart">
+                                        </form>
+                                    </div>
+                                </article>
+                            </div>
+                    {% endfor %}
+                </div>
+        </section>
+{% endblock %}
