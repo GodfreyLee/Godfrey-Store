@@ -70,7 +70,7 @@ def order():
                 flash('There was an issue adding the item to your basket',category='danger')
             return redirect(url_for('main.order'))
         else:
-            flash('There is already one of these in the basket')
+            flash('The selected item has been added into cart already',category='warning')
             return redirect(url_for('main.order'))
     return render_template('order.html', order=order, total_price=total_price)
 
@@ -95,7 +95,7 @@ def deleteorderitem():
 def deleteorder():
     if 'order_id' in session:
         del session['order_id']
-        flash('All items deleted')
+        flash('The shopping cart is cleared',category='danger')
     return redirect(url_for('main.index'))
 
 # Complete the order
@@ -119,7 +119,7 @@ def checkout():
             try:
                 db.session.commit()
                 del session['order_id']
-                flash('Thank you! One of our team members will contact you soon...')
+                flash('Thanks for your order, the products will be shipped within 3-5 days',category='success')
                 return redirect(url_for('main.index'))
             except:
                 return 'There was an issue completing your order'
