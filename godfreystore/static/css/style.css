@@ -207,6 +207,19 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .bg-secondary {
+            background-color: #c2c2c2 !important;
+        }
+
+        .icon-size {
+            height: 40px;
+        }
+
+        .form-div{
+            margin-top: 10px;
+        }
+
+
  
 
         

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, request, session, flash, redirect
+from flask import Blueprint, render_template, url_for, request, session, flash, redirect, abort
 from .models import ProductDetail, Product, Order, orderdetails
 from datetime import datetime
 from .forms import CheckoutForm
@@ -27,7 +27,18 @@ def search():
     search = request.args.get('search')
     search = '%{}%'.format(search)
     product = Product.query.filter(Product.productname.like(search)).all()
+    if not product:
+        abort(404)
     return render_template('search.html', product=product )
+
+@main_bp.route('/categories/<category>')
+def categories(category):
+    product = Product.query.filter(Product.product_category.like(category)).all()
+    cat = product[0].product_category
+    print(cat)
+    if not product:
+        abort(404)
+    return render_template('categorised-item.html', cat=cat, product=product )
 
 # Referred to as "Basket" to the user
 @main_bp.route('/order', methods=['POST', 'GET'])

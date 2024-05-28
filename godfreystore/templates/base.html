@@ -40,11 +40,11 @@
                         <a class="nav-item nav-link dropdown-toggle active" data-toggle="dropdown" id="bookDropdown"
                             aria-haspopup="true" aria-expanded="false" href="#">Categories</a>
                         <div class="dropdown-menu" aria-labelledby="bookDropdown">
-                            <a class="dropdown-item" href="{{ url_for('main.index') }}#car-gps">Car GPS</a>
+                            <a class="dropdown-item" href="{{ url_for('main.categories', category='Car GPS') }}">Car GPS</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('main.index') }}#cycling-gps">Cycling GPS</a>
+                            <a class="dropdown-item" href="{{ url_for('main.categories', category='Cycling GPS')}}">Cycling GPS</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('main.index') }}#fitness-watches">Fitness Watches</a>
+                            <a class="dropdown-item" href="{{ url_for('main.categories', category='Fitness Watches')}}">Fitness Watches</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item disabled" href="#">Fish Finder (Coming Soon)</a>
                         </div>
@@ -83,8 +83,23 @@
 
     <!-- Footer of the website -->
     <footer class="footer">
+
         <div class="text-center py-2 bg-secondary">
-            <span class="text-light">Copyright &copy; 2024</span>
+            <div class="row">
+                <div class="col-md-12 col-lg-4">
+                    <img class="align-middle icon-size" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                    <a class="navbar-brand">GODFREY's</a>
+                </div>
+                <div class="col-md-12 col-lg-4 ">
+                    <a class="navbar-brand">Australia’s best GPS retailer.</a>
+                </div>
+                <div class="col-md-12 col-lg-4 text-center">
+                    <img class="align-middle icon-size" src="{{ url_for('static', filename='img/footer-icon1.svg') }}" alt="icon">
+                    <img class="align-middle icon-size" src="{{ url_for('static', filename='img/footer-icon2.svg') }}" alt="icon">
+                    <img class="align-middle icon-size" src="{{ url_for('static', filename='img/footer-icon3.svg') }}" alt="icon">
+                    <img class="align-middle icon-size" src="{{ url_for('static', filename='img/footer-icon4.png') }}" alt="icon">
+                </div>
+            </div>
         </div>
     </footer>
 

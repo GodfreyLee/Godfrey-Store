@@ -2,11 +2,19 @@
 
 {% block main %}
      <!-- Contains the main content of the website, divided into sections -->
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{cat}}</li>
+            </ol>
+        </nav> 
         <section class="m-3">
             <div class="category-title-parent">
-                <h1 class="category-title" id="car-gps">Search Result</h1>
+                {% for product in product%}
+                <h1 class="category-title">{{product.product_category}}</h1>
+                {% endfor %}
             </div>
-
             <div class="container-fluid">
                 <div class="row">
                     {% for product in product%}

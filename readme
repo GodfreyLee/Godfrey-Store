@@ -1,4 +1,0 @@
-Instructions
-1. Run create_db.py to initiate the database of the app
-2. Run run.py to initiate the app in local environment
-3. Enter http://127.0.0.1:5000/admin/dbseed to load data for the products and details

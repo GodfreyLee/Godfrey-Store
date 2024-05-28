@@ -39,7 +39,7 @@
                                     <div class="card-body">
                                         <h3 class="card-title">{{product.productname}}</h3>
                                         <h5 class="card-text text-success font-weight-light">Stock Status: {{product.stock_status}}</h5>
-                                        <h5 class="card-text font-italic">${{product.price}}</h5>
+                                        <h5 class="card-text font-italic">{{"$%.2f"|format(product.price)}}</h5>
                                     </div>
                                     <div class="card-footer">
                                         <form action="{{url_for('main.order')}}">
@@ -74,7 +74,7 @@
                                 <div class="card-body">
                                     <h3 class="card-title">{{product.productname}}</h3>
                                     <h5 class="card-text text-success font-weight-light">Stock Status: {{product.stock_status}}</h5>
-                                    <h5 class="card-text font-italic">${{product.price}}</h5>
+                                    <h5 class="card-text font-italic">{{"$%.2f"|format(product.price)}}</h5>
                                 </div>
                                 <div class="card-footer">
                                     <form action="{{url_for('main.order')}}">
@@ -108,7 +108,7 @@
                                 <div class="card-body">
                                     <h3 class="card-title">{{product.productname}}</h3>
                                     <h5 class="card-text text-success font-weight-light">Stock Status: {{product.stock_status}}</h5>
-                                    <h5 class="card-text font-italic">${{product.price}}</h5>
+                                    <h5 class="card-text font-italic">${{"%.2f"|format(product.price)}}</h5>
                                 </div>
                                 <div class="card-footer">
                                     <form action="{{url_for('main.order')}}">

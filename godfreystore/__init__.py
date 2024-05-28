@@ -27,5 +27,11 @@ def create_app():
     app.register_blueprint(views.main_bp)
     from . import admin
     app.register_blueprint(admin.admin_bp)
+
+
+    @app.errorhandler(404)
+    def not_found(e):
+        error = "Oops, the product you searched is not found in our store!"
+        return render_template("404.html", error=error)
     
     return app

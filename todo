@@ -2,4 +2,17 @@
 2. models.py done
 3. admin.py done
 4. create_db.py done
-5. update admin.py
+5. update admin.py done
+
+
+
+1. Add Footer done
+2. Add responsiveness in form.html done
+3. Amend content in 404.html done
+
+
+
+
+3. how to render several columns in checkout.html
+
+https://wtforms.readthedocs.io/en/3.1.x/fields/
